@@ -1,0 +1,26 @@
+
+
+{# Template: your_app/templates/admin/base_site.html #}
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+
+{# Setup favicon #}
+{% block extrahead %}<link rel="shortcut icon" type="image/png" href="https://www.logicrays.com/images/logo.png"/>{% endblock %}
+
+{# Setup browser tab label #}
+{% block title %}{{ title }} |  {% trans "Your title" %}{% endblock %}
+{# Setup branding #}
+{% block branding %}
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            {# Your logo here #}
+            <img style="background-color: white" src="https://www.logicrays.com/images/logo.png" alt="Admin" height="60%" width="60%">
+            <br><br>
+            </span>
+             {% trans "  MyCustom Portal" %}
+        </a>
+    </h1>
+{% endblock %}
+
+
+

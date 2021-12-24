@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+   table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+                                
+<div class="container">
+  <h2>Basic form</h2>
+  <form  method ='POST' action="{% url 'user_data' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="email">First Name:</label>
+        <input type="text" class="form-control" id="first" placeholder="Enter First-name" name="first_name">
+      </div>
+    <div class="form-group">
+        <label for="email">Last Name:</label>
+        <input type="text" class="form-control" id="last" placeholder="Enter Last-name" name="last_name">
+      </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Confirm Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter Re-password" name="confirm_password">
+      </div>
+    <div class="form-group">
+        <label for="pwd">Number:</label>
+        <input type="phone" class="form-control" id="number" placeholder="Enter Number" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1"> file input</label>
+        <input type="file"  class="form-control-file" id="exampleFormControlFile1" name="image">
+      </div>  
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+ 
+
+
+<div class="space_blank"></div>
+<div class="space_blank"></div>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Contact Number</th>
+    <th>Email</th>
+
+  </tr>
+  <tr>
+    {% for i in user_obj %}
+    <td>{{i.first_name}}</td>
+    <td>{{i.last_name}}</td>
+
+    <td>{{i.phone}}</td>
+    <td>{{i.email}}</td>
+    
+  </tr>
+  {% endfor %}
+</table>
+<div class="space_blank"></div>
+
+</body>
+</html>
